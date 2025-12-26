@@ -92,7 +92,6 @@ button {
 #yes {
     background: #ff5fa2;
     color: white;
-    transform: scale(1);
 }
 
 #no {
@@ -102,7 +101,7 @@ button {
 .heart {
     position: absolute;
     bottom: -20px;
-    font-size: 20px;
+    font-size: 22px;
     animation: float 3s linear forwards;
 }
 
@@ -114,6 +113,10 @@ button {
 </head>
 
 <body>
+
+<audio id="music">
+    <source src="dilerimki.mp3" type="audio/mpeg">
+</audio>
 
 <div class="card">
     <div class="cat">
@@ -139,6 +142,7 @@ button {
 let scale = 1;
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
+const music = document.getElementById("music");
 
 noBtn.onclick = () => {
     scale += 0.25;
@@ -146,7 +150,9 @@ noBtn.onclick = () => {
 };
 
 yesBtn.onclick = () => {
-    for (let i = 0; i < 25; i++) {
+    music.play();
+
+    for (let i = 0; i < 30; i++) {
         const heart = document.createElement("div");
         heart.className = "heart";
         heart.innerText = "💖";
