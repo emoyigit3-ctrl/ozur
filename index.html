@@ -27,6 +27,10 @@ body {
     text-align: center;
 }
 
+.hidden {
+    display: none;
+}
+
 .cat {
     width: 140px;
     height: 140px;
@@ -118,7 +122,8 @@ button {
     <source src="dilerimki.mp3" type="audio/mpeg">
 </audio>
 
-<div class="card">
+<!-- İLK EKRAN -->
+<div class="card" id="screen1">
     <div class="cat">
         <div class="ear left"></div>
         <div class="ear right"></div>
@@ -138,11 +143,21 @@ button {
     </div>
 </div>
 
+<!-- İKİNCİ EKRAN -->
+<div class="card hidden" id="screen2">
+    <h2>
+        Çok teşekkür ederim sevgilim 💖<br><br>
+        Discord’dan aramanı bekliyorum 🥰
+    </h2>
+</div>
+
 <script>
 let scale = 1;
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
 const music = document.getElementById("music");
+const screen1 = document.getElementById("screen1");
+const screen2 = document.getElementById("screen2");
 
 noBtn.onclick = () => {
     scale += 0.25;
@@ -152,14 +167,17 @@ noBtn.onclick = () => {
 yesBtn.onclick = () => {
     music.play();
 
-    for (let i = 0; i < 30; i++) {
+    screen1.classList.add("hidden");
+    screen2.classList.remove("hidden");
+
+    setInterval(() => {
         const heart = document.createElement("div");
         heart.className = "heart";
         heart.innerText = "💖";
         heart.style.left = Math.random() * 100 + "vw";
         document.body.appendChild(heart);
         setTimeout(() => heart.remove(), 3000);
-    }
+    }, 300);
 };
 </script>
 
